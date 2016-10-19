@@ -42,7 +42,7 @@ public:
 };
 
 class Director {
-    std::shared_ptr<Builder> builder = std::shared_ptr<Builder>(new ConcreteBuilder);
+    std::shared_ptr<Builder> builder = std::make_shared<ConcreteBuilder>();
 public:
     Product ConstructA() {
         builder->BuildPartB();

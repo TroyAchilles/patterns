@@ -28,20 +28,20 @@ public:
 class ConcreteFactoryA : public AbstractFactory {
 public:
     virtual std::shared_ptr<AbstractProduct> CreateProduct() override {
-        return std::shared_ptr<AbstractProduct>(new ConcreteProductA);
+        return std::make_shared<ConcreteProductA>();
     }
 };
 
 class ConcreteFactoryB : public AbstractFactory {
 public:
     virtual std::shared_ptr<AbstractProduct> CreateProduct() override {
-        return std::shared_ptr<AbstractProduct>(new ConcreteProductB);
+        return std::make_shared<ConcreteProductB>();
     }
 };
 
 int main() {
-    auto factorya = std::shared_ptr<AbstractFactory>(new ConcreteFactoryA);
-    auto factoryb = std::shared_ptr<AbstractFactory>(new ConcreteFactoryB);
+    std::shared_ptr<AbstractFactory> factorya = std::make_shared<ConcreteFactoryA>();
+    std::shared_ptr<AbstractFactory> factoryb = std::make_shared<ConcreteFactoryB>();
     auto producta = factorya->CreateProduct();
     auto productb = factoryb->CreateProduct();
     producta->Opteration();

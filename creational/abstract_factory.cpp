@@ -49,27 +49,27 @@ public:
 class ConcreteFactoryA : public AbstractFactory {
 public:
     virtual std::shared_ptr<AbstractProductA> CreateProductA() override {
-        return std::shared_ptr<AbstractProductA>(new ConcreteProductA1);
+        return std::make_shared<ConcreteProductA1>();
     }
 
     virtual std::shared_ptr<AbstractProductB> CreateProductB() override {
-        return std::shared_ptr<AbstractProductB>(new ConcreteProductB2);
+        return std::make_shared<ConcreteProductB2>();
     }
 };
 
 class ConcreteFactoryB : public AbstractFactory {
 public:
     virtual std::shared_ptr<AbstractProductA> CreateProductA() override {
-        return std::shared_ptr<AbstractProductA>(new ConcreteProductA2);
+        return std::make_shared<ConcreteProductA2>();
     }
     virtual std::shared_ptr<AbstractProductB> CreateProductB() override {
-        return std::shared_ptr<AbstractProductB>(new ConcreteProductB1);
+        return std::make_shared<ConcreteProductB1>();
     }
 };
 
 int main() {
-    auto factorya = std::shared_ptr<AbstractFactory>(new ConcreteFactoryA);
-    auto factoryb = std::shared_ptr<AbstractFactory>(new ConcreteFactoryB);
+    std::shared_ptr<AbstractFactory> factorya = std::make_shared<ConcreteFactoryA>();
+    std::shared_ptr<AbstractFactory> factoryb = std::make_shared<ConcreteFactoryB>();
     auto producta1 = factorya->CreateProductA();
     auto productb1 = factorya->CreateProductB();
     auto producta2 = factoryb->CreateProductA();

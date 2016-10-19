@@ -26,9 +26,9 @@ class Factory {
 public:
     std::shared_ptr<AbstractProduct> CreateProduct(std::string name) {
         if (name == "A")
-            return std::shared_ptr<AbstractProduct>(new ConcreteProductA);
+            return std::make_shared<ConcreteProductA>();
         else if (name == "B")
-            return std::shared_ptr<AbstractProduct>(new ConcreteProductB);
+            return std::make_shared<ConcreteProductB>();
         else
             return nullptr;
     }
